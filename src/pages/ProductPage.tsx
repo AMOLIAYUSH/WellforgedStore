@@ -78,7 +78,7 @@ const ProductPage = () => {
                 <ScrollReveal animation="fade-right">
                   <div className="relative group">
                     <div className="absolute -inset-2 sm:-inset-4 bg-gradient-to-br from-primary/10 to-gold/10 rounded-xl sm:rounded-3xl blur-lg sm:blur-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-700" />
-                    <div className="relative bg-secondary rounded-xl sm:rounded-3xl overflow-hidden shadow-2xl border border-white/10 w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[500px] mx-auto">
+                    <div className="relative bg-secondary rounded-xl sm:rounded-3xl overflow-hidden shadow-2xl border border-white/10 w-full max-w-[380px] sm:max-w-[480px] lg:max-w-full mx-auto m-[2%] -mt-[2%]">
                       <div className="aspect-[5/4] relative overflow-hidden bg-white">
                         {productImages.map((img, index) => (
                           <div
@@ -90,7 +90,7 @@ const ProductPage = () => {
                             <img
                               src={img}
                               alt={`WellForged Moringa - View ${index + 1}`}
-                              className="w-full h-full object-contain p-4 sm:p-8"
+                              className="w-full h-full object-contain p-2 sm:p-3"
                             />
                           </div>
                         ))}
