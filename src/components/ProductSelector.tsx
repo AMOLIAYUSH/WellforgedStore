@@ -1,0 +1,60 @@
+import { useState } from "react";
+import { ShoppingCart, ShoppingBag, Truck, Shield, FlaskConical } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useCart } from "@/context/CartContext";
+import productImage from "@/assets/Packaging_Updated.png";
+
+interface SKU { id: string; size: string; price: number; originalPrice?: number; label?: string; }
+
+const skus: SKU[] = [
+  { id: "moringa-100g", size: "100g", price: 349 },
+  { id: "moringa-250g", size: "250g", price: 549, originalPrice: 699, label: "Best Value" },
+];
+
+const trustBadges = [
+  { icon: Truck, label: "Free Shipping ₹500+" },
+  { icon: Shield, label: "Secure UPI Payment" },
+  { icon: FlaskConical, label: "Lab Verified" },
+];
+
+const ProductSelector = () => {
+  const [selectedSku, setSelectedSku] = useState<SKU>(skus[1]);
+  const { addItem, totalItems, setIsOpen } = useCart();
+
+  const handleAddToCart = () => {
+    addItem({ id: selectedSku.id, name: `Moringa Powder - ${selectedSku.size}`, size: selectedSku.size, price: selectedSku.price, originalPrice: selectedSku.originalPrice, image: productImage });
+  };
+
+  return (
+    <div className="space-y-4 sm:space-y-5">
+      <div className="space-y-2">
+        <label className="font-body text-sm font-medium text-foreground">Select Size</label>
+        <div className="grid grid-cols-2 gap-2 sm:gap-3">
+          {skus.map((sku) => (
+            <button key={sku.id} onClick={() => setSelectedSku(sku)} className={`relative p-2 sm:p-3 rounded-xl border-2 transition-all duration-200 text-left ${selectedSku.id === sku.id ? "border-primary bg-primary/5" : "border-border bg-card hover:border-primary/50"}`}>
+              {sku.label && <span className="absolute -top-2 left-3 px-1.5 py-0.5 bg-gold text-[10px] font-semibold rounded-full text-foreground">{sku.label}</span>}
+              <div className="font-display text-base sm:text-lg font-semibold text-foreground">{sku.size}</div>
+              <div className="flex items-center gap-2 mt-1">
+                <span className="font-display text-base sm:text-lg font-bold text-primary">₹{sku.price}</span>
+                {sku.originalPrice && <span className="font-body text-xs sm:text-sm text-muted-foreground line-through">₹{sku.originalPrice}</span>}
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+      <div className="space-y-3">
+        {totalItems > 0 ? (
+          <div className="grid grid-cols-2 gap-3">
+            <Button variant="hero" size="lg" className="w-full gap-2 h-10 text-sm" onClick={handleAddToCart}><ShoppingCart className="h-4 w-4" />Add to Cart</Button>
+            <Button variant="outline" size="lg" className="w-full gap-2 h-10 text-sm" onClick={() => setIsOpen(true)}><ShoppingBag className="h-4 w-4" />Go to Cart</Button>
+          </div>
+        ) : (
+          <Button variant="hero" size="lg" className="w-full gap-2 h-10 text-sm" onClick={handleAddToCart}><ShoppingCart className="h-4 w-4" />Add to Cart</Button>
+        )}
+      </div>
+
+    </div>
+  );
+};
+
+export default ProductSelector;
