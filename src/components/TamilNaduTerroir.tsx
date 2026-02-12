@@ -15,8 +15,8 @@ const TamilNaduTerroir = () => {
         <ScrollReveal>
           <div className="text-center mb-8 sm:mb-10 lg:mb-14">
             <span className="inline-block font-body text-[9px] sm:text-[10px] lg:text-xs uppercase tracking-[0.15em] sm:tracking-[0.2em] lg:tracking-[0.3em] text-primary/70 border border-primary/20 px-2.5 sm:px-3 lg:px-4 py-1 sm:py-1.5 lg:py-2 rounded-full mb-3 sm:mb-4 lg:mb-6">The Origin</span>
-            <h2 className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-foreground mb-3 sm:mb-4 lg:mb-6">The Tamil Nadu Terroir</h2>
-            <p className="font-body text-sm sm:text-base lg:text-lg text-muted-foreground max-w-xl sm:max-w-2xl mx-auto leading-relaxed px-2">Just as fine wines are defined by their terroir, our Moringa is defined by its origin. Tamil Nadu's unique microclimate creates the gold standard of Moringa cultivation.</p>
+            <h2 className="font-display font-semibold text-foreground mb-3 sm:mb-4 lg:mb-6" style={{ fontSize: "var(--text-3xl)" }}>The Tamil Nadu Terroir</h2>
+            <p className="font-body text-muted-foreground max-w-xl sm:max-w-2xl mx-auto leading-relaxed px-2" style={{ fontSize: "var(--text-base)" }}>Just as fine wines are defined by their terroir, our Moringa is defined by its origin. Tamil Nadu's unique microclimate creates the gold standard of Moringa cultivation.</p>
           </div>
         </ScrollReveal>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
@@ -26,8 +26,8 @@ const TamilNaduTerroir = () => {
                 <div className="h-10 w-10 sm:h-12 sm:w-12 lg:h-14 lg:w-14 mx-auto mb-2 sm:mb-3 lg:mb-4 rounded-lg sm:rounded-xl bg-primary/10 flex items-center justify-center transition-all duration-300 group-hover:bg-primary/20 group-hover:scale-110">
                   <feature.icon className="h-5 w-5 sm:h-6 sm:w-6 lg:h-7 lg:w-7 text-primary" />
                 </div>
-                <h3 className="font-display text-xs sm:text-sm lg:text-base xl:text-lg font-semibold text-foreground mb-1 sm:mb-2 leading-tight">{feature.title}</h3>
-                <p className="font-body text-[10px] sm:text-xs lg:text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
+                <h3 className="font-display font-semibold text-foreground mb-1 sm:mb-2 leading-tight" style={{ fontSize: "var(--text-base)" }}>{feature.title}</h3>
+                <p className="font-body text-muted-foreground leading-relaxed" style={{ fontSize: "var(--text-xs)" }}>{feature.description}</p>
               </div>
             </ScrollReveal>
           ))}
@@ -36,8 +36,8 @@ const TamilNaduTerroir = () => {
           <div className="mt-6 sm:mt-10 lg:mt-14 p-4 sm:p-6 lg:p-8 bg-card rounded-xl sm:rounded-2xl border border-border">
             <div className="flex flex-col lg:flex-row items-center gap-4 sm:gap-6 lg:gap-10">
               <div className="flex-1 text-center lg:text-left">
-                <h3 className="font-display text-base sm:text-lg lg:text-xl xl:text-2xl font-semibold text-foreground mb-2 sm:mb-3">Why Single-Origin Matters</h3>
-                <p className="font-body text-xs sm:text-sm lg:text-base text-muted-foreground leading-relaxed mb-3 sm:mb-4">Unlike blended supplements that source from multiple unknown locations, our single-origin approach ensures consistent quality, traceable provenance, and direct farmer relationships that support sustainable agriculture.</p>
+                <h3 className="font-display font-semibold text-foreground mb-2 sm:mb-3" style={{ fontSize: "var(--text-xl)" }}>Why Single-Origin Matters</h3>
+                <p className="font-body text-muted-foreground leading-relaxed mb-3 sm:mb-4" style={{ fontSize: "var(--text-sm)" }}>Unlike blended supplements that source from multiple unknown locations, our single-origin approach ensures consistent quality, traceable provenance, and direct farmer relationships that support sustainable agriculture.</p>
                 <div className="flex flex-wrap justify-center lg:justify-start gap-2 sm:gap-3">
                   {["Farm-to-Package Traceability", "Direct Farmer Partnerships", "Zero Middlemen"].map(tag => (
                     <span key={tag} className="px-2 sm:px-3 py-1 sm:py-1.5 bg-primary/10 text-primary text-[10px] sm:text-xs font-medium rounded-full">{tag}</span>

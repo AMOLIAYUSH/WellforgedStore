@@ -13,7 +13,7 @@ const CartDrawer = () => {
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetContent side="right" className="w-full sm:max-w-md flex flex-col bg-background">
         <SheetHeader className="border-b border-border pb-3">
-          <SheetTitle className="flex items-center gap-2 font-display text-xl"><ShoppingBag className="h-5 w-5" />Your Cart ({totalItems})</SheetTitle>
+          <SheetTitle className="flex items-center gap-2 font-display" style={{ fontSize: "var(--text-xl)" }}><ShoppingBag className="h-5 w-5" />Your Cart ({totalItems})</SheetTitle>
         </SheetHeader>
         {items.length === 0 ? (
           <div className="flex-1 flex flex-col items-center justify-center py-12">
@@ -33,13 +33,13 @@ const CartDrawer = () => {
                         <h4 className="font-display font-semibold text-foreground text-sm leading-tight">{item.name}</h4>
                         <span className="inline-block px-1.5 py-0.5 bg-primary/10 text-primary-[10px] text-xs font-medium rounded-full mt-0.5">{item.size}</span>
                       </div>
-                      <button onClick={() => removeItem(item.id)} className="text-muted-foreground hover:text-foreground transition-colors"><X className="h-4 w-4" /></button>
+                      <button onClick={() => removeItem(item.id)} className="text-muted-foreground hover:text-foreground transition-colors p-2.5 -mr-2.5"><X className="h-5 w-5" /></button>
                     </div>
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-1.5 bg-muted rounded-lg h-7">
-                        <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="p-1.5 hover:bg-muted-foreground/10 rounded-l-lg transition-colors h-full flex items-center justify-center"><Minus className="h-3 w-3" /></button>
-                        <span className="font-body text-sm font-medium w-5 text-center">{item.quantity}</span>
-                        <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="p-1.5 hover:bg-muted-foreground/10 rounded-r-lg transition-colors h-full flex items-center justify-center"><Plus className="h-3 w-3" /></button>
+                      <div className="flex items-center gap-1.5 bg-muted rounded-lg h-11">
+                        <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="px-3 hover:bg-muted-foreground/10 rounded-l-lg transition-colors h-full flex items-center justify-center min-w-[44px]"><Minus className="h-4 w-4" /></button>
+                        <span className="font-body text-sm font-medium w-6 text-center">{item.quantity}</span>
+                        <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="px-3 hover:bg-muted-foreground/10 rounded-r-lg transition-colors h-full flex items-center justify-center min-w-[44px]"><Plus className="h-4 w-4" /></button>
                       </div>
                       <div className="text-right">
                         <p className="font-display font-semibold text-foreground">₹{(item.price * item.quantity).toLocaleString()}</p>
@@ -53,9 +53,9 @@ const CartDrawer = () => {
             <div className="border-t border-border pt-3 space-y-2">
               <div className="flex justify-between font-display text-base sm:text-lg font-semibold pt-2"><span>Total</span><span>₹{total.toLocaleString()}</span></div>
               <Link to="/checkout" onClick={() => setIsOpen(false)}>
-                <Button variant="hero" size="lg" className="w-full mt-3 gap-2 h-10">Proceed to Checkout<ArrowRight className="h-4 w-4" /></Button>
+                <Button variant="hero" size="lg" className="w-full mt-3 gap-2 h-12">Proceed to Checkout<ArrowRight className="h-5 w-5" /></Button>
               </Link>
-              <button onClick={() => setIsOpen(false)} className="w-full text-center font-body text-sm text-muted-foreground hover:text-foreground transition-colors py-2">Continue Shopping</button>
+              <button onClick={() => setIsOpen(false)} className="w-full text-center font-body text-sm text-muted-foreground hover:text-foreground transition-colors py-3">Continue Shopping</button>
             </div>
           </>
         )}

@@ -98,31 +98,30 @@ const ProductPage = () => {
                         {/* Navigation Arrows */}
                         <button
                           onClick={prevImage}
-                          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-1.5 sm:p-2 rounded-full bg-black/5 hover:bg-black/10 backdrop-blur-sm transition-all duration-300 hover:scale-110 text-primary"
+                          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/5 hover:bg-black/10 backdrop-blur-sm transition-all duration-300 hover:scale-110 text-primary z-20"
                           aria-label="Previous image"
                         >
                           <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
                         </button>
                         <button
                           onClick={nextImage}
-                          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-1.5 sm:p-2 rounded-full bg-black/5 hover:bg-black/10 backdrop-blur-sm transition-all duration-300 hover:scale-110 text-primary"
+                          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/5 hover:bg-black/10 backdrop-blur-sm transition-all duration-300 hover:scale-110 text-primary z-20"
                           aria-label="Next image"
                         >
                           <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
                         </button>
 
                         {/* Dots Indicator */}
-                        <div className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 flex gap-1.5 sm:gap-2">
+                        <div className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 flex gap-1 sm:gap-1.5">
                           {productImages.map((_, index) => (
                             <button
                               key={index}
                               onClick={() => { setCurrentImageIndex(index); setIsAutoPlaying(false); }}
-                              className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-all duration-300 ${index === currentImageIndex
-                                ? "bg-primary w-4 sm:w-5"
-                                : "bg-primary/20 hover:bg-primary/40"
-                                }`}
+                              className="p-2 transition-all duration-300"
                               aria-label={`Go to slide ${index + 1}`}
-                            />
+                            >
+                              <div className={`h-2 rounded-full transition-all duration-300 ${index === currentImageIndex ? "bg-primary w-5" : "bg-primary/20 w-2 hover:bg-primary/40"}`} />
+                            </button>
                           ))}
                         </div>
                       </div>
@@ -133,8 +132,8 @@ const ProductPage = () => {
               <div className="space-y-4 sm:space-y-5 lg:space-y-6">
                 <ScrollReveal animation="fade-left">
                   <div className="space-y-1 sm:space-y-2">
-                    <h1 className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-foreground leading-[1.1]">WellForged – Moringa Powder</h1>
-                    <p className="font-body text-xs sm:text-sm md:text-base text-muted-foreground leading-relaxed">Pure, nutrient-rich moringa powder—lab tested, no fillers, nothing hidden. Just nature's most powerful green, delivered fresh.</p>
+                    <h1 className="font-display font-semibold text-foreground leading-[1.1]" style={{ fontSize: "var(--text-3xl)" }}>WellForged – Moringa Powder</h1>
+                    <p className="font-body text-muted-foreground leading-relaxed" style={{ fontSize: "var(--text-sm)" }}>Pure, nutrient-rich moringa powder—lab tested, no fillers, nothing hidden. Just nature's most powerful green, delivered fresh.</p>
                   </div>
                 </ScrollReveal>
                 <ScrollReveal animation="fade-up">
@@ -157,7 +156,7 @@ const ProductPage = () => {
             <div className="mt-6 sm:mt-10 lg:mt-12">
               <ScrollReveal animation="fade-up">
                 <div className="space-y-3 sm:space-y-5">
-                  <h2 className="font-display text-lg sm:text-xl md:text-2xl font-semibold text-foreground text-center">Ingredient Profile</h2>
+                  <h2 className="font-display font-semibold text-foreground text-center" style={{ fontSize: "var(--text-2xl)" }}>Ingredient Profile</h2>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
                     {ingredients.map(({ icon: Icon, name, description }) => (
                       <div key={name} className="flex flex-col items-center text-center gap-2 sm:gap-3 p-3 sm:p-4 bg-primary/5 rounded-xl border border-primary/10 transition-all duration-200 hover:bg-primary/10 h-full">
@@ -179,8 +178,8 @@ const ProductPage = () => {
             <ScrollReveal animation="fade-up">
               <div className="text-center mb-8 sm:mb-10 lg:mb-12">
                 <span className="inline-block font-body text-[10px] sm:text-xs uppercase tracking-widest text-gold mb-2 sm:mb-3">Quality Reference</span>
-                <h2 className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-foreground mb-3 sm:mb-4">Technical Specifications</h2>
-                <p className="font-body text-xs sm:text-sm md:text-base text-muted-foreground max-w-xl sm:max-w-2xl mx-auto px-2">Complete transparency on our sourcing, testing protocols, and purity standards.</p>
+                <h2 className="font-display font-semibold text-foreground mb-3 sm:mb-4" style={{ fontSize: "var(--text-3xl)" }}>Technical Specifications</h2>
+                <p className="font-body text-muted-foreground max-w-xl sm:max-w-2xl mx-auto px-2" style={{ fontSize: "var(--text-base)" }}>Complete transparency on our sourcing, testing protocols, and purity standards.</p>
               </div>
             </ScrollReveal>
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">

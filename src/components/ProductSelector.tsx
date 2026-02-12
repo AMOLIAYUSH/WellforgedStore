@@ -46,12 +46,12 @@ const ProductSelector = () => {
         <label className="font-body text-sm font-medium text-foreground">Select Size</label>
         <div className="grid grid-cols-2 gap-2 sm:gap-3">
           {skus.map((sku) => (
-            <button key={sku.id} onClick={() => setSelectedSku(sku)} className={`relative p-2 sm:p-3 rounded-xl border-2 transition-all duration-200 text-left ${selectedSku.id === sku.id ? "border-primary bg-primary/5" : "border-border bg-card hover:border-primary/50"}`}>
-              {sku.label && <span className="absolute -top-2 left-3 px-1.5 py-0.5 bg-gold text-[10px] font-semibold rounded-full text-foreground">{sku.label}</span>}
-              <div className="font-display text-base sm:text-lg font-semibold text-foreground">{sku.size}</div>
+            <button key={sku.id} onClick={() => setSelectedSku(sku)} className={`relative p-3 sm:p-4 rounded-xl border-2 transition-all duration-200 text-left min-h-[44px] ${selectedSku.id === sku.id ? "border-primary bg-primary/5" : "border-border bg-card hover:border-primary/50"}`}>
+              {sku.label && <span className="absolute -top-2 left-2 sm:left-3 px-1.5 py-0.5 bg-gold text-[9px] sm:text-[10px] font-semibold rounded-full text-foreground whitespace-nowrap">{sku.label}</span>}
+              <div className="font-display font-semibold text-foreground" style={{ fontSize: "var(--text-base)" }}>{sku.size}</div>
               <div className="flex items-center gap-2 mt-1">
-                <span className="font-display text-base sm:text-lg font-bold text-primary">₹{sku.price}</span>
-                {sku.originalPrice && <span className="font-body text-xs sm:text-sm text-muted-foreground line-through">₹{sku.originalPrice}</span>}
+                <span className="font-display font-bold text-primary" style={{ fontSize: "var(--text-lg)" }}>₹{sku.price}</span>
+                {sku.originalPrice && <span className="font-body text-muted-foreground line-through" style={{ fontSize: "var(--text-xs)" }}>₹{sku.originalPrice}</span>}
               </div>
             </button>
           ))}
@@ -60,11 +60,11 @@ const ProductSelector = () => {
       <div className="space-y-3">
         {totalItems > 0 ? (
           <div className="grid grid-cols-2 gap-3">
-            <Button variant="hero" size="lg" className="w-full gap-2 h-10 text-sm" onClick={handleAddToCart}><ShoppingCart className="h-4 w-4" />Add to Cart</Button>
-            <Button variant="outline" size="lg" className="w-full gap-2 h-10 text-sm" onClick={() => setIsOpen(true)}><ShoppingBag className="h-4 w-4" />Go to Cart</Button>
+            <Button variant="hero" size="lg" className="w-full h-11 sm:h-12 gap-2 text-sm" onClick={handleAddToCart}><ShoppingCart className="h-4 w-4" />Add to Cart</Button>
+            <Button variant="outline" size="lg" className="w-full h-11 sm:h-12 gap-2 text-sm" onClick={() => setIsOpen(true)}><ShoppingBag className="h-4 w-4" />Go to Cart</Button>
           </div>
         ) : (
-          <Button variant="hero" size="lg" className="w-full gap-2 h-10 text-sm" onClick={handleAddToCart}><ShoppingCart className="h-4 w-4" />Add to Cart</Button>
+          <Button variant="hero" size="lg" className="w-full h-11 sm:h-12 gap-2 text-sm" onClick={handleAddToCart}><ShoppingCart className="h-4 w-4" />Add to Cart</Button>
         )}
       </div>
 

@@ -23,38 +23,38 @@ const Footer = () => {
             <img src={wfLogo} alt="WellForged Logo" className="w-8 h-8 sm:w-10 sm:h-10 object-contain mb-2" />
             <p className="font-display text-xs text-foreground font-medium">WellForged</p>
             <p className="font-body text-[9px] text-muted-foreground italic mb-3">Wellness, Forged With Integrity</p>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               {socialLinks.map((social) => (
-                <a key={social.label} href={social.href} className="h-7 w-7 flex items-center justify-center rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-all duration-300" aria-label={social.label}>
-                  <social.icon className="h-3.5 w-3.5" />
+                <a key={social.label} href={social.href} className="h-11 w-11 flex items-center justify-center rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-all duration-300" aria-label={social.label}>
+                  <social.icon className="h-5 w-5" />
                 </a>
               ))}
             </div>
           </div>
           <div className="flex flex-col items-center sm:items-start">
             <h4 className="font-display text-[10px] sm:text-xs font-semibold text-foreground uppercase tracking-wider mb-1.5 sm:mb-2">Quick Links</h4>
-            <ul className="space-y-0.5 sm:space-y-1">
+            <ul className="space-y-1.5 sm:space-y-2">
               {quickLinks.map((link) => (
-                <li key={link.name}><Link to={link.href} onClick={() => window.scrollTo(0, 0)} className="font-body text-[11px] sm:text-sm text-muted-foreground hover:text-foreground transition-colors">{link.name}</Link></li>
+                <li key={link.name}><Link to={link.href} onClick={() => window.scrollTo(0, 0)} className="font-body text-muted-foreground hover:text-foreground transition-colors py-1.5 inline-block" style={{ fontSize: "var(--text-sm)" }}>{link.name}</Link></li>
               ))}
             </ul>
           </div>
           <div className="flex flex-col items-center sm:items-start">
             <h4 className="font-display text-[10px] sm:text-xs font-semibold text-foreground uppercase tracking-wider mb-1.5 sm:mb-2">Transparency</h4>
-            <form onSubmit={handleBatchSearch} className="w-full max-w-[140px] sm:max-w-[180px]">
+            <form onSubmit={handleBatchSearch} className="w-full max-w-[200px] sm:max-w-[220px]">
               <div className="relative">
-                <Search className="absolute left-2 top-1/2 -translate-y-1/2 h-3 w-3 text-muted-foreground" />
-                <input type="text" placeholder="Batch ID..." value={batchNumber} onChange={(e) => setBatchNumber(e.target.value)} className="w-full h-7 sm:h-8 pl-6 pr-7 bg-card border border-border rounded-md text-[11px] sm:text-xs placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors" />
-                <button type="submit" className="absolute right-1 top-1/2 -translate-y-1/2 h-5 w-5 flex items-center justify-center rounded bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"><ArrowRight className="h-3 w-3" /></button>
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <input type="text" placeholder="Batch ID..." value={batchNumber} onChange={(e) => setBatchNumber(e.target.value)} className="w-full h-11 pl-9 pr-12 bg-card border border-border rounded-lg text-sm placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors" />
+                <button type="submit" className="absolute right-1 top-1/2 -translate-y-1/2 h-9 w-10 flex items-center justify-center rounded bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"><ArrowRight className="h-4 w-4" /></button>
               </div>
             </form>
             <Link to="/transparency" onClick={() => window.scrollTo(0, 0)} className="font-body text-[10px] sm:text-xs text-primary hover:underline mt-1">Transparency Portal →</Link>
           </div>
           <div className="flex flex-col items-center sm:items-start">
             <h4 className="font-display text-[10px] sm:text-xs font-semibold text-foreground uppercase tracking-wider mb-1.5 sm:mb-2">Contact</h4>
-            <ul className="space-y-0.5 sm:space-y-1">
+            <ul className="space-y-1.5 sm:space-y-2">
               {contactLinks.map((link) => (
-                <li key={link.name}><a href={link.href} className="font-body text-[11px] sm:text-sm text-muted-foreground hover:text-foreground transition-colors">{link.name}</a></li>
+                <li key={link.name}><a href={link.href} className="font-body text-muted-foreground hover:text-foreground transition-colors py-1.5 inline-block" style={{ fontSize: "var(--text-sm)" }}>{link.name}</a></li>
               ))}
             </ul>
           </div>

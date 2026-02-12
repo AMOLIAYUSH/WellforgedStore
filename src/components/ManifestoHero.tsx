@@ -35,7 +35,7 @@ const ManifestoHero = () => {
             The No-Nonsense Supplement Brand
           </span>
         </div>
-        <h1 className="font-display text-[1.75rem] leading-[1.15] sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground sm:leading-[1.12] mb-4 sm:mb-6 lg:mb-8" style={{ textWrap: "balance", wordBreak: "keep-all", overflowWrap: "normal" } as React.CSSProperties}>
+        <h1 className="font-display font-semibold text-foreground leading-[1.15] sm:leading-[1.12] mb-4 sm:mb-6 lg:mb-8" style={{ fontSize: "var(--text-4xl)", textWrap: "balance", wordBreak: "keep-all", overflowWrap: "normal" } as React.CSSProperties}>
           {words.map((word, index) => (
             <span key={index} className={`inline-block transition-all duration-500 mr-[0.2em] last:mr-0 ${index < visibleWords ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`} style={{ transitionDelay: `${index * 150}ms` }}>
               {word}

@@ -37,8 +37,8 @@ const Navbar = () => {
           <div className="flex items-center gap-1.5 sm:gap-3">
             {isSubPage && (
               <Link to="/" onClick={() => window.scrollTo(0, 0)}>
-                <Button variant="ghost" size="sm" className="gap-1 transition-all duration-300 hover:-translate-x-1 px-1.5 sm:px-2">
-                  <ArrowLeft className="h-4 w-4" />
+                <Button variant="ghost" size="icon" className="h-11 w-11 transition-all duration-300 hover:-translate-x-1">
+                  <ArrowLeft className="h-5 w-5" />
                 </Button>
               </Link>
             )}
@@ -57,45 +57,45 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-3">
             {isLoggedIn ? (
               <>
-                <button onClick={() => setCartOpen(true)} className="relative p-2 hover:bg-muted rounded-full transition-colors" aria-label="Open cart">
+                <button onClick={() => setCartOpen(true)} className="relative p-3 hover:bg-muted rounded-full transition-colors" aria-label="Open cart">
                   <ShoppingCart className="h-5 w-5 text-foreground" />
                   {totalItems > 0 && (
-                    <span className="absolute -top-0.5 -right-0.5 h-5 w-5 bg-destructive text-destructive-foreground text-xs font-bold rounded-full flex items-center justify-center">
+                    <span className="absolute top-1 right-1 h-5 w-5 bg-destructive text-destructive-foreground text-xs font-bold rounded-full flex items-center justify-center">
                       {totalItems > 9 ? "9+" : totalItems}
                     </span>
                   )}
                 </button>
-                <button onClick={logout} className="relative p-2 hover:bg-muted rounded-full transition-colors" aria-label="Logout">
+                <button onClick={logout} className="relative p-3 hover:bg-muted rounded-full transition-colors" aria-label="Logout">
                   <LogOut className="h-5 w-5 text-foreground" />
                 </button>
               </>
             ) : (
-              <button onClick={() => navigate("/auth")} className="relative p-2 hover:bg-muted rounded-full transition-colors" aria-label="Login">
+              <button onClick={() => navigate("/auth")} className="relative p-3 hover:bg-muted rounded-full transition-colors" aria-label="Login">
                 <LogIn className="h-5 w-5 text-foreground" />
               </button>
             )}
           </div>
-          <div className="flex md:hidden items-center gap-2">
+          <div className="flex md:hidden items-center gap-1">
             {isLoggedIn ? (
               <>
-                <button onClick={() => setCartOpen(true)} className="relative p-2 hover:bg-muted rounded-full transition-colors" aria-label="Open cart">
+                <button onClick={() => setCartOpen(true)} className="relative p-3 hover:bg-muted rounded-full transition-colors" aria-label="Open cart">
                   <ShoppingCart className="h-5 w-5 text-foreground" />
                   {totalItems > 0 && (
-                    <span className="absolute -top-0.5 -right-0.5 h-5 w-5 bg-destructive text-destructive-foreground text-xs font-bold rounded-full flex items-center justify-center">
+                    <span className="absolute top-1.5 right-1.5 h-4 w-4 bg-destructive text-destructive-foreground text-[10px] font-bold rounded-full flex-shrink-0 flex items-center justify-center">
                       {totalItems > 9 ? "9+" : totalItems}
                     </span>
                   )}
                 </button>
-                <button onClick={logout} className="relative p-2 hover:bg-muted rounded-full transition-colors" aria-label="Logout">
+                <button onClick={logout} className="relative p-3 hover:bg-muted rounded-full transition-colors" aria-label="Logout">
                   <LogOut className="h-5 w-5 text-foreground" />
                 </button>
               </>
             ) : (
-              <button onClick={() => navigate("/auth")} className="relative p-2 hover:bg-muted rounded-full transition-colors" aria-label="Login">
+              <button onClick={() => navigate("/auth")} className="relative p-3 hover:bg-muted rounded-full transition-colors" aria-label="Login">
                 <LogIn className="h-5 w-5 text-foreground" />
               </button>
             )}
-            <button className="p-2 transition-transform duration-300 hover:scale-110" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
+            <button className="p-3 transition-transform duration-300 hover:scale-110 h-11 w-11 flex items-center justify-center" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>

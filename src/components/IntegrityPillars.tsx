@@ -20,7 +20,7 @@ const IntegrityPillars = () => {
       <div className="max-w-6xl mx-auto relative z-10 px-1 sm:px-0">
         <ScrollReveal animation="fade-up" className="text-center mb-8 sm:mb-12 lg:mb-16 xl:mb-20">
           <span className="inline-block font-body text-[9px] sm:text-[10px] lg:text-xs uppercase tracking-[0.15em] sm:tracking-[0.2em] lg:tracking-[0.25em] text-primary/70 mb-2 sm:mb-3 lg:mb-4">Our Foundation</span>
-          <h2 className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-foreground">The Integrity Pillars</h2>
+          <h2 className="font-display font-semibold text-foreground" style={{ fontSize: "var(--text-3xl)" }}>The Integrity Pillars</h2>
         </ScrollReveal>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 xl:gap-8">
           {pillars.map((pillar, index) => (
@@ -32,8 +32,8 @@ const IntegrityPillars = () => {
                 <div className={`h-10 w-10 sm:h-12 sm:w-12 lg:h-14 lg:w-14 rounded-lg sm:rounded-xl bg-primary/10 flex items-center justify-center mb-3 sm:mb-4 lg:mb-6 transition-all duration-300 ${hoveredIndex === index ? "bg-primary/20 scale-110" : ""}`}>
                   <pillar.icon className={`h-5 w-5 sm:h-6 sm:w-6 lg:h-7 lg:w-7 text-primary transition-transform duration-300 ${hoveredIndex === index ? "scale-110" : ""}`} />
                 </div>
-                <h3 className="font-display text-base sm:text-lg lg:text-xl xl:text-2xl font-semibold text-foreground mb-2 sm:mb-3 lg:mb-4">{pillar.title}</h3>
-                <p className="font-body text-xs sm:text-sm lg:text-base text-muted-foreground leading-relaxed">{pillar.description}</p>
+                <h3 className="font-display font-semibold text-foreground mb-2 sm:mb-3 lg:mb-4" style={{ fontSize: "var(--text-xl)" }}>{pillar.title}</h3>
+                <p className="font-body text-muted-foreground leading-relaxed" style={{ fontSize: "var(--text-sm)" }}>{pillar.description}</p>
                 <div className={`absolute bottom-0 left-0 h-0.5 sm:h-1 bg-gradient-to-r from-primary to-primary/50 rounded-b-xl sm:rounded-b-2xl transition-all duration-500 ${hoveredIndex === index ? "w-full" : "w-0"}`} />
               </div>
             </ScrollReveal>

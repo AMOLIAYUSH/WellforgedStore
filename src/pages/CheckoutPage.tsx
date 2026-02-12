@@ -29,7 +29,7 @@ const CheckoutPage = () => {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-6 sm:mb-8">
             <Link to="/product" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-4"><ArrowLeft className="h-4 w-4" /><span className="font-body text-sm">Back to Product</span></Link>
-            <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold text-foreground">Checkout</h1>
+            <h1 className="font-display font-semibold text-foreground" style={{ fontSize: "var(--text-3xl)" }}>Checkout</h1>
           </div>
           {items.length === 0 ? (
             <div className="text-center py-16">
@@ -40,28 +40,28 @@ const CheckoutPage = () => {
             <div className="grid lg:grid-cols-5 gap-6 lg:gap-8">
               <div className="lg:col-span-3 space-y-6">
                 <div className="bg-card rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-border">
-                  <div className="flex items-center gap-2 mb-4"><MapPin className="h-5 w-5 text-primary" /><h2 className="font-display text-lg sm:text-xl font-semibold text-foreground">Shipping Details</h2></div>
+                  <div className="flex items-center gap-2 mb-4"><MapPin className="h-5 w-5 text-primary" /><h2 className="font-display font-semibold text-foreground" style={{ fontSize: "var(--text-lg)" }}>Shipping Details</h2></div>
                   <div className="space-y-4">
-                    <div><label className="font-body text-sm font-medium text-foreground mb-1.5 block">Full Name *</label><Input name="name" value={formData.name} onChange={handleInputChange} placeholder="Enter your full name" /></div>
-                    <div><label className="font-body text-sm font-medium text-foreground mb-1.5 block">Phone Number *</label><Input name="phone" type="tel" value={formData.phone} onChange={handleInputChange} placeholder="+91 98765 43210" /></div>
-                    <div><label className="font-body text-sm font-medium text-foreground mb-1.5 block">Address *</label><Input name="address" value={formData.address} onChange={handleInputChange} placeholder="House/Flat No., Street, Locality" /></div>
+                    <div><label className="font-body text-sm font-medium text-foreground mb-1.5 block">Full Name *</label><Input name="name" value={formData.name} onChange={handleInputChange} placeholder="Enter your full name" className="h-11 sm:h-12" /></div>
+                    <div><label className="font-body text-sm font-medium text-foreground mb-1.5 block">Phone Number *</label><Input name="phone" type="tel" value={formData.phone} onChange={handleInputChange} placeholder="+91 98765 43210" className="h-11 sm:h-12" /></div>
+                    <div><label className="font-body text-sm font-medium text-foreground mb-1.5 block">Address *</label><Input name="address" value={formData.address} onChange={handleInputChange} placeholder="House/Flat No., Street, Locality" className="h-11 sm:h-12" /></div>
                     <div className="grid grid-cols-2 gap-3">
-                      <div><label className="font-body text-sm font-medium text-foreground mb-1.5 block">Pincode *</label><Input name="pincode" value={formData.pincode} onChange={handleInputChange} placeholder="400001" /></div>
-                      <div><label className="font-body text-sm font-medium text-foreground mb-1.5 block">City *</label><Input name="city" value={formData.city} onChange={handleInputChange} placeholder="Mumbai" /></div>
+                      <div><label className="font-body text-sm font-medium text-foreground mb-1.5 block">Pincode *</label><Input name="pincode" value={formData.pincode} onChange={handleInputChange} placeholder="400001" className="h-11 sm:h-12" /></div>
+                      <div><label className="font-body text-sm font-medium text-foreground mb-1.5 block">City *</label><Input name="city" value={formData.city} onChange={handleInputChange} placeholder="Mumbai" className="h-11 sm:h-12" /></div>
                     </div>
                   </div>
                 </div>
                 <div className="bg-card rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-border">
-                  <div className="flex items-center gap-2 mb-4"><CreditCard className="h-5 w-5 text-primary" /><h2 className="font-display text-lg sm:text-xl font-semibold text-foreground">Payment Method</h2></div>
+                  <div className="flex items-center gap-2 mb-4"><CreditCard className="h-5 w-5 text-primary" /><h2 className="font-display font-semibold text-foreground" style={{ fontSize: "var(--text-lg)" }}>Payment Method</h2></div>
                   <div className="space-y-3">
                     {paymentMethods.map((method) => (
-                      <button key={method.id} onClick={() => setSelectedPayment(method.id)} className={`w-full flex items-center gap-4 p-4 rounded-xl border-2 transition-all duration-200 text-left ${selectedPayment === method.id ? "border-primary bg-primary/5" : "border-border bg-background hover:border-primary/50"}`}>
-                        <div className={`h-10 w-10 rounded-lg flex items-center justify-center ${selectedPayment === method.id ? "bg-primary/20" : "bg-muted"}`}><method.icon className={`h-5 w-5 ${selectedPayment === method.id ? "text-primary" : "text-muted-foreground"}`} /></div>
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2"><span className="font-display font-medium text-foreground">{method.name}</span>{method.popular && <span className="px-2 py-0.5 bg-gold/20 text-gold text-xs font-medium rounded-full">Popular</span>}</div>
-                          <p className="font-body text-xs text-muted-foreground">{method.description}</p>
+                      <button key={method.id} onClick={() => setSelectedPayment(method.id)} className={`w-full flex items-center gap-2.5 sm:gap-4 p-3 sm:p-4 rounded-xl border-2 transition-all duration-200 text-left ${selectedPayment === method.id ? "border-primary bg-primary/5" : "border-border bg-background hover:border-primary/50"}`}>
+                        <div className={`h-9 w-9 sm:h-10 sm:w-10 rounded-lg flex items-center justify-center flex-shrink-0 ${selectedPayment === method.id ? "bg-primary/20" : "bg-muted"}`}><method.icon className={`h-4 w-4 sm:h-5 sm:w-5 ${selectedPayment === method.id ? "text-primary" : "text-muted-foreground"}`} /></div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5"><span className="font-display font-medium text-foreground text-sm sm:text-base">{method.name}</span>{method.popular && <span className="px-1.5 py-0.5 bg-gold/20 text-gold text-[10px] font-medium rounded-full">Popular</span>}</div>
+                          <p className="font-body text-[10px] sm:text-xs text-muted-foreground truncate sm:whitespace-normal">{method.description}</p>
                         </div>
-                        <div className={`h-5 w-5 rounded-full border-2 flex items-center justify-center ${selectedPayment === method.id ? "border-primary bg-primary" : "border-muted-foreground/30"}`}>{selectedPayment === method.id && <CheckCircle className="h-3 w-3 text-primary-foreground" />}</div>
+                        <div className={`h-4 w-4 sm:h-5 sm:w-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${selectedPayment === method.id ? "border-primary bg-primary" : "border-muted-foreground/30"}`}>{selectedPayment === method.id && <CheckCircle className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-primary-foreground" />}</div>
                       </button>
                     ))}
                   </div>
@@ -70,7 +70,7 @@ const CheckoutPage = () => {
               </div>
               <div className="lg:col-span-2">
                 <div className="bg-card rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-border sticky top-20">
-                  <h2 className="font-display text-lg sm:text-xl font-semibold text-foreground mb-4">Order Summary</h2>
+                  <h2 className="font-display font-semibold text-foreground mb-4" style={{ fontSize: "var(--text-lg)" }}>Order Summary</h2>
                   <div className="space-y-3 mb-4 pb-4 border-b border-border">
                     {items.map((item) => (
                       <div key={item.id} className="flex gap-3">
@@ -85,7 +85,7 @@ const CheckoutPage = () => {
                     <div className="flex justify-between font-body text-sm"><span className="text-muted-foreground">Delivery</span><span className={shipping === 0 ? "text-primary font-medium" : "text-foreground"}>{shipping === 0 ? "FREE" : `₹${shipping}`}</span></div>
                   </div>
                   <div className="flex justify-between font-display text-lg font-semibold pt-3 border-t border-border mb-4"><span>Total</span><span>₹{total.toLocaleString()}</span></div>
-                  <Button variant="hero" size="xl" className="w-full mb-4">Place Order</Button>
+                  <Button variant="hero" size="xl" className="w-full h-12 sm:h-14 mb-4">Place Order</Button>
                   <div className="flex flex-wrap justify-center gap-3 pt-3 border-t border-border">
                     <div className="flex items-center gap-1.5 text-muted-foreground"><Shield className="h-4 w-4 text-primary" /><span className="font-body text-xs">Secure Payment</span></div>
                     <div className="flex items-center gap-1.5 text-muted-foreground"><Truck className="h-4 w-4 text-primary" /><span className="font-body text-xs">Fast Delivery</span></div>

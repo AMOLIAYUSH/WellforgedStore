@@ -167,7 +167,7 @@ const AuthPage = () => {
                                 className="w-40 h-40 object-contain opacity-90"
                             />
                             <div className="space-y-2">
-                                <h1 className="font-serif text-4xl font-light text-[#2D4739] tracking-tight">
+                                <h1 className="font-serif font-light text-[#2D4739] tracking-tight" style={{ fontSize: "var(--text-4xl)" }}>
                                     WellForged
                                 </h1>
                                 <p className="font-light text-sm text-[#5a6b5f] tracking-wide max-w-xs mx-auto leading-relaxed">
@@ -179,7 +179,7 @@ const AuthPage = () => {
                         {/* Form Section */}
                         <div className="w-full max-w-md mx-auto">
                             <div className="bg-white/60 backdrop-blur-sm rounded-2xl sm:rounded-3xl border border-[#e8ebe9] p-5 sm:p-6 lg:p-8 shadow-[0_8px_30px_rgb(45,71,57,0.06)]">
-                                <h2 className="font-serif text-xl sm:text-2xl font-light text-[#2D4739] mb-6 sm:mb-8 tracking-tight">
+                                <h2 className="font-serif font-light text-[#2D4739] mb-6 sm:mb-8 tracking-tight" style={{ fontSize: "var(--text-3xl)" }}>
                                     {isSignUp ? "Create Account" : "Welcome Back"}
                                 </h2>
 
@@ -212,11 +212,11 @@ const AuthPage = () => {
                                                     onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                                                     required
                                                     placeholder=" "
-                                                    className="peer w-full px-4 py-3 bg-transparent border border-[#d4d9d6] rounded-xl focus:border-[#2D4739] focus:outline-none transition-colors text-sm"
+                                                    className="peer w-full px-4 h-12 bg-transparent border border-[#d4d9d6] rounded-xl focus:border-[#2D4739] focus:outline-none transition-colors text-sm"
                                                 />
                                                 <label
                                                     htmlFor="lastName"
-                                                    className="absolute left-4 top-3 text-[#7a8a7f] text-sm transition-all pointer-events-none origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-85 peer-focus:-translate-y-5 peer-focus:left-3 peer-focus:text-[#2D4739] peer-focus:bg-white peer-focus:px-1 peer-[:not(:placeholder-shown)]:scale-85 peer-[:not(:placeholder-shown)]:-translate-y-5 peer-[:not(:placeholder-shown)]:left-3 peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1"
+                                                    className="absolute left-4 top-3.5 text-[#7a8a7f] text-sm transition-all pointer-events-none origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-85 peer-focus:-translate-y-6 peer-focus:left-3 peer-focus:text-[#2D4739] peer-focus:bg-white peer-focus:px-1 peer-[:not(:placeholder-shown)]:scale-85 peer-[:not(:placeholder-shown)]:-translate-y-6 peer-[:not(:placeholder-shown)]:left-3 peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1"
                                                 >
                                                     Last Name
                                                 </label>

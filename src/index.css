@@ -69,6 +69,18 @@
     /* Typography */
     --font-display: 'Playfair Display', serif;
     --font-body: 'Inter', sans-serif;
+
+    /* Fluid Typography - Base scale at 320px to 1280px */
+    --text-xs: clamp(0.65rem, 0.05vw + 0.6rem, 0.75rem);
+    --text-sm: clamp(0.75rem, 0.1vw + 0.7rem, 0.875rem);
+    --text-base: clamp(0.875rem, 0.15vw + 0.8rem, 1rem);
+    --text-lg: clamp(1rem, 0.2vw + 0.95rem, 1.125rem);
+    --text-xl: clamp(1.125rem, 0.3vw + 1rem, 1.25rem);
+    --text-2xl: clamp(1.25rem, 0.5vw + 1.1rem, 1.5rem);
+    --text-3xl: clamp(1.5rem, 0.8vw + 1.3rem, 2rem);
+    --text-4xl: clamp(2rem, 1.2vw + 1.6rem, 2.5rem);
+    --text-5xl: clamp(2.5rem, 2vw + 1.8rem, 3.5rem);
+    --text-6xl: clamp(3rem, 3vw + 2rem, 5rem);
   }
 
   .dark {
@@ -134,17 +146,22 @@
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    width: 100%;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
+    font-size: var(--text-base);
     font-weight: 400;
     line-height: 1.6;
     letter-spacing: -0.01em;
     overflow-x: hidden;
+    width: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    touch-action: manipulation;
   }
 
   h1, h2, h3, h4, h5, h6 {

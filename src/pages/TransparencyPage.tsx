@@ -89,7 +89,7 @@ const TransparencyPage = () => {
         <section className="flex-1 flex items-center justify-center px-4 sm:px-6 py-2 sm:py-4 bg-gradient-to-b from-secondary via-secondary to-background">
           <div className="max-w-2xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/20 rounded-full mb-2 sm:mb-3 animate-fade-up"><Shield className="h-3 w-3 text-primary" /><span className="font-mono text-[10px] uppercase tracking-[0.15em] text-primary">Secure Verification</span></div>
-            <h1 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-2 sm:mb-4 animate-fade-up delay-100">Turn Skepticism Into Confidence</h1>
+            <h1 className="font-display font-bold text-foreground mb-2 sm:mb-4 animate-fade-up delay-100" style={{ fontSize: "var(--text-4xl)" }}>Turn Skepticism Into Confidence</h1>
             <form onSubmit={handleSearch} className="max-w-xl mx-auto animate-fade-up delay-200">
               <div className="relative group">
                 <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-gold/20 to-primary/20 rounded-2xl blur-lg opacity-0 group-focus-within:opacity-100 transition-opacity duration-500" />
@@ -98,13 +98,13 @@ const TransparencyPage = () => {
                   <input type="text" placeholder="WF2026021212" value={batchNumber} onChange={(e) => setBatchNumber(e.target.value)} className="w-full h-12 sm:h-14 md:h-16 pl-10 sm:pl-12 pr-4 sm:pr-6 bg-card border-2 border-border text-foreground placeholder:text-muted-foreground rounded-xl font-body text-base sm:text-lg md:text-xl text-center transition-all duration-300 focus:outline-none focus:border-primary focus:shadow-[0_0_40px_-5px_hsl(var(--primary)/0.5)]" required />
                 </div>
               </div>
-              <Button type="submit" disabled={isLoading} variant="hero" size="lg" className="mt-3 sm:mt-4 w-full sm:w-auto px-8 text-sm sm:text-base gap-2">
+              <Button type="submit" disabled={isLoading} variant="hero" size="lg" className="mt-3 sm:mt-4 w-full sm:w-auto h-12 sm:h-14 px-8 text-sm sm:text-base gap-2">
                 {isLoading ? <><Loader2 className="h-5 w-5 animate-spin" />Verifying...</> : <><Shield className="h-5 w-5" />Transparency</>}
               </Button>
             </form>
             <div className="mt-4 sm:mt-6 animate-fade-up delay-300">
-              <button onClick={handleTrySample} className="inline-flex items-center gap-2 px-3 py-1.5 bg-gold/10 hover:bg-gold/20 border border-gold/30 rounded-full transition-all duration-300">
-                <Sparkles className="h-3.5 w-3.5 text-gold" /><span className="font-body text-sm text-foreground">Try sample: <span className="font-mono font-medium text-gold">WF2026021212</span></span>
+              <button onClick={handleTrySample} className="inline-flex items-center gap-2 px-4 py-2.5 bg-gold/10 hover:bg-gold/20 border border-gold/30 rounded-full transition-all duration-300">
+                <Sparkles className="h-4 w-4 text-gold" /><span className="font-body text-sm text-foreground">Try sample: <span className="font-mono font-medium text-gold">WF2026021212</span></span>
               </button>
             </div>
           </div>
@@ -150,8 +150,8 @@ const TransparencyPage = () => {
                 <div className="space-y-6 sm:space-y-8">
                   <div className="text-center mb-6 sm:mb-8 animate-fade-up">
                     <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-4"><CheckCircle className="h-4 w-4 text-primary" /><span className="font-mono text-xs uppercase tracking-[0.15em] text-primary">Certificate Verified</span></div>
-                    <h2 className="font-display text-2xl sm:text-3xl font-semibold text-foreground">{searchedBatch.productName}</h2>
-                    <p className="font-mono text-xs sm:text-sm text-muted-foreground mt-2">Batch #{searchedBatch.batchNumber} • Tested by {searchedBatch.labName}</p>
+                    <h2 className="font-display font-semibold text-foreground" style={{ fontSize: "var(--text-3xl)" }}>{searchedBatch.productName}</h2>
+                    <p className="font-mono text-muted-foreground mt-2" style={{ fontSize: "var(--text-sm)" }}>Batch #{searchedBatch.batchNumber} • Tested by {searchedBatch.labName}</p>
                   </div>
                   <div className="mb-8 sm:mb-10">
                     <h3 className="font-display text-xl sm:text-2xl font-semibold text-center text-foreground mb-6 animate-fade-up">WellForged Batch Scorecard</h3>
@@ -162,8 +162,8 @@ const TransparencyPage = () => {
                           <div key={item.title} className={`p-6 md:p-8 bg-card rounded-2xl border border-border shadow-card text-center transition-all duration-500 hover:shadow-elevated hover:-translate-y-1 ${visibleCards.includes(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: `${index * 150}ms` }}>
                             <div className="h-12 w-12 md:h-14 md:w-14 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4"><IconComponent className="h-6 w-6 md:h-7 md:w-7 text-primary" /></div>
                             <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-primary/10 rounded-full mb-3"><CheckCircle className="h-3.5 w-3.5 text-primary" /><span className="font-mono text-xs font-semibold text-primary uppercase tracking-wide">{item.status}</span></div>
-                            <h4 className="font-display text-lg md:text-xl font-semibold text-foreground mb-2">{item.title}</h4>
-                            <p className="font-body text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                            <h4 className="font-display font-semibold text-foreground mb-2" style={{ fontSize: "var(--text-xl)" }}>{item.title}</h4>
+                            <p className="font-body text-muted-foreground leading-relaxed" style={{ fontSize: "var(--text-sm)" }}>{item.description}</p>
                           </div>
                         );
                       })}
