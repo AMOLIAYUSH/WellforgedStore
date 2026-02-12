@@ -1,15 +1,18 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ArrowLeft, ShoppingCart } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Menu, X, ArrowLeft, ShoppingCart, LogIn, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
+import { useAuth } from "@/context/AuthContext";
 import newLogo from "@/assets/Transparent_logo.png";
 import homeLogo from "@/assets/Transparent_logo_WF.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const { totalItems, setIsOpen: setCartOpen } = useCart();
+  const { isLoggedIn, logout } = useAuth();
   const isSubPage = location.pathname !== "/" && location.pathname !== "";
   const isHomePage = location.pathname === "/" || location.pathname === "";
   const currentLogo = isHomePage ? homeLogo : newLogo;
@@ -52,24 +55,46 @@ const Navbar = () => {
             ))}
           </div>
           <div className="hidden md:flex items-center gap-3">
-            <button onClick={() => setCartOpen(true)} className="relative p-2 hover:bg-muted rounded-full transition-colors" aria-label="Open cart">
-              <ShoppingCart className="h-5 w-5 text-foreground" />
-              {totalItems > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 h-5 w-5 bg-destructive text-destructive-foreground text-xs font-bold rounded-full flex items-center justify-center">
-                  {totalItems > 9 ? "9+" : totalItems}
-                </span>
-              )}
-            </button>
+            {isLoggedIn ? (
+              <>
+                <button onClick={() => setCartOpen(true)} className="relative p-2 hover:bg-muted rounded-full transition-colors" aria-label="Open cart">
+                  <ShoppingCart className="h-5 w-5 text-foreground" />
+                  {totalItems > 0 && (
+                    <span className="absolute -top-0.5 -right-0.5 h-5 w-5 bg-destructive text-destructive-foreground text-xs font-bold rounded-full flex items-center justify-center">
+                      {totalItems > 9 ? "9+" : totalItems}
+                    </span>
+                  )}
+                </button>
+                <button onClick={logout} className="relative p-2 hover:bg-muted rounded-full transition-colors" aria-label="Logout">
+                  <LogOut className="h-5 w-5 text-foreground" />
+                </button>
+              </>
+            ) : (
+              <button onClick={() => navigate("/auth")} className="relative p-2 hover:bg-muted rounded-full transition-colors" aria-label="Login">
+                <LogIn className="h-5 w-5 text-foreground" />
+              </button>
+            )}
           </div>
           <div className="flex md:hidden items-center gap-2">
-            <button onClick={() => setCartOpen(true)} className="relative p-2 hover:bg-muted rounded-full transition-colors" aria-label="Open cart">
-              <ShoppingCart className="h-5 w-5 text-foreground" />
-              {totalItems > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 h-5 w-5 bg-destructive text-destructive-foreground text-xs font-bold rounded-full flex items-center justify-center">
-                  {totalItems > 9 ? "9+" : totalItems}
-                </span>
-              )}
-            </button>
+            {isLoggedIn ? (
+              <>
+                <button onClick={() => setCartOpen(true)} className="relative p-2 hover:bg-muted rounded-full transition-colors" aria-label="Open cart">
+                  <ShoppingCart className="h-5 w-5 text-foreground" />
+                  {totalItems > 0 && (
+                    <span className="absolute -top-0.5 -right-0.5 h-5 w-5 bg-destructive text-destructive-foreground text-xs font-bold rounded-full flex items-center justify-center">
+                      {totalItems > 9 ? "9+" : totalItems}
+                    </span>
+                  )}
+                </button>
+                <button onClick={logout} className="relative p-2 hover:bg-muted rounded-full transition-colors" aria-label="Logout">
+                  <LogOut className="h-5 w-5 text-foreground" />
+                </button>
+              </>
+            ) : (
+              <button onClick={() => navigate("/auth")} className="relative p-2 hover:bg-muted rounded-full transition-colors" aria-label="Login">
+                <LogIn className="h-5 w-5 text-foreground" />
+              </button>
+            )}
             <button className="p-2 transition-transform duration-300 hover:scale-110" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>

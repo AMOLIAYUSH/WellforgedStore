@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ShoppingCart, ShoppingBag, Truck, Shield, FlaskConical } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
+import { useAuth } from "@/context/AuthContext";
 import productImage from "@/assets/Packaging_Updated.png";
 
 interface SKU { id: string; size: string; price: number; originalPrice?: number; label?: string; }
@@ -20,8 +22,21 @@ const trustBadges = [
 const ProductSelector = () => {
   const [selectedSku, setSelectedSku] = useState<SKU>(skus[1]);
   const { addItem, totalItems, setIsOpen } = useCart();
+  const { isLoggedIn, setPendingCartAction, setRedirectUrl } = useAuth();
+  const navigate = useNavigate();
 
   const handleAddToCart = () => {
+    if (!isLoggedIn) {
+      // Store pending cart action
+      setPendingCartAction({ sku: selectedSku.id, action: "add" });
+      // Store current page as redirect URL
+      setRedirectUrl("/product");
+      // Redirect to auth
+      navigate("/auth");
+      return;
+    }
+
+    // User is logged in, add to cart normally
     addItem({ id: selectedSku.id, name: `Moringa Powder - ${selectedSku.size}`, size: selectedSku.size, price: selectedSku.price, originalPrice: selectedSku.originalPrice, image: productImage });
   };
 
