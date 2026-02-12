@@ -143,10 +143,10 @@ const AuthPage = () => {
                 <meta name="description" content="Join WellForged for clean, transparent nutrition." />
             </Helmet>
 
-            <div className="h-screen bg-gradient-to-br from-[#f8f9f7] via-[#fdfefe] to-[#f3f5f2] flex flex-col overflow-hidden">
+            <div className="min-h-screen bg-gradient-to-br from-[#f8f9f7] via-[#fdfefe] to-[#f3f5f2] flex flex-col overflow-y-auto">
                 {/* Minimal Header */}
-                <header className="absolute top-0 left-0 right-0 z-50 flex-shrink-0">
-                    <div className="max-w-7xl mx-auto px-6 py-4">
+                <header className="flex-shrink-0">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
                         <Link to="/" onClick={() => window.scrollTo(0, 0)}>
                             <button className="group flex items-center gap-2 text-[#2D4739] hover:text-[#1a2a20] transition-colors">
                                 <ArrowLeft className="h-4 w-4" />
@@ -157,17 +157,17 @@ const AuthPage = () => {
                 </header>
 
                 {/* Main Content */}
-                <main className="flex-1 flex items-center justify-center px-6 overflow-hidden">
-                    <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-16 items-center">
-                        {/* Logo Section */}
-                        <div className="flex flex-col items-center justify-center text-center space-y-6">
+                <main className="flex-1 flex items-center justify-center px-4 sm:px-6 py-6 sm:py-8">
+                    <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+                        {/* Logo Section - Hidden on Mobile */}
+                        <div className="hidden lg:flex flex-col items-center justify-center text-center space-y-6">
                             <img
                                 src={logo}
                                 alt="WellForged Logo"
-                                className="w-32 h-32 lg:w-40 lg:h-40 object-contain opacity-90"
+                                className="w-40 h-40 object-contain opacity-90"
                             />
                             <div className="space-y-2">
-                                <h1 className="font-serif text-3xl lg:text-4xl font-light text-[#2D4739] tracking-tight">
+                                <h1 className="font-serif text-4xl font-light text-[#2D4739] tracking-tight">
                                     WellForged
                                 </h1>
                                 <p className="font-light text-sm text-[#5a6b5f] tracking-wide max-w-xs mx-auto leading-relaxed">
@@ -178,15 +178,15 @@ const AuthPage = () => {
 
                         {/* Form Section */}
                         <div className="w-full max-w-md mx-auto">
-                            <div className="bg-white/60 backdrop-blur-sm rounded-3xl border border-[#e8ebe9] p-8 shadow-[0_8px_30px_rgb(45,71,57,0.06)]">
-                                <h2 className="font-serif text-2xl font-light text-[#2D4739] mb-8 tracking-tight">
+                            <div className="bg-white/60 backdrop-blur-sm rounded-2xl sm:rounded-3xl border border-[#e8ebe9] p-5 sm:p-6 lg:p-8 shadow-[0_8px_30px_rgb(45,71,57,0.06)]">
+                                <h2 className="font-serif text-xl sm:text-2xl font-light text-[#2D4739] mb-6 sm:mb-8 tracking-tight">
                                     {isSignUp ? "Create Account" : "Welcome Back"}
                                 </h2>
 
                                 {isSignUp ? (
                                     // Sign Up Form
-                                    <form onSubmit={handleSignUp} className="space-y-5">
-                                        <div className="grid grid-cols-2 gap-4">
+                                    <form onSubmit={handleSignUp} className="space-y-4 sm:space-y-5">
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                                             <div className="relative">
                                                 <input
                                                     type="text"
@@ -199,7 +199,7 @@ const AuthPage = () => {
                                                 />
                                                 <label
                                                     htmlFor="firstName"
-                                                    className="absolute left-4 top-3 text-[#7a8a7f] text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm peer-focus:top-[-10px] peer-focus:left-3 peer-focus:text-xs peer-focus:text-[#2D4739] peer-focus:bg-white peer-focus:px-1 peer-[:not(:placeholder-shown)]:top-[-10px] peer-[:not(:placeholder-shown)]:left-3 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1"
+                                                    className="absolute left-4 top-3 text-[#7a8a7f] text-sm transition-all pointer-events-none origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-85 peer-focus:-translate-y-5 peer-focus:left-3 peer-focus:text-[#2D4739] peer-focus:bg-white peer-focus:px-1 peer-[:not(:placeholder-shown)]:scale-85 peer-[:not(:placeholder-shown)]:-translate-y-5 peer-[:not(:placeholder-shown)]:left-3 peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1"
                                                 >
                                                     First Name
                                                 </label>
@@ -216,7 +216,7 @@ const AuthPage = () => {
                                                 />
                                                 <label
                                                     htmlFor="lastName"
-                                                    className="absolute left-4 top-3 text-[#7a8a7f] text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm peer-focus:top-[-10px] peer-focus:left-3 peer-focus:text-xs peer-focus:text-[#2D4739] peer-focus:bg-white peer-focus:px-1 peer-[:not(:placeholder-shown)]:top-[-10px] peer-[:not(:placeholder-shown)]:left-3 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1"
+                                                    className="absolute left-4 top-3 text-[#7a8a7f] text-sm transition-all pointer-events-none origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-85 peer-focus:-translate-y-5 peer-focus:left-3 peer-focus:text-[#2D4739] peer-focus:bg-white peer-focus:px-1 peer-[:not(:placeholder-shown)]:scale-85 peer-[:not(:placeholder-shown)]:-translate-y-5 peer-[:not(:placeholder-shown)]:left-3 peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1"
                                                 >
                                                     Last Name
                                                 </label>
@@ -237,7 +237,7 @@ const AuthPage = () => {
                                             />
                                             <label
                                                 htmlFor="age"
-                                                className="absolute left-4 top-3 text-[#7a8a7f] text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm peer-focus:top-[-10px] peer-focus:left-3 peer-focus:text-xs peer-focus:text-[#2D4739] peer-focus:bg-white peer-focus:px-1 peer-[:not(:placeholder-shown)]:top-[-10px] peer-[:not(:placeholder-shown)]:left-3 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1"
+                                                className="absolute left-4 top-3 text-[#7a8a7f] text-sm transition-all pointer-events-none origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-85 peer-focus:-translate-y-5 peer-focus:left-3 peer-focus:text-[#2D4739] peer-focus:bg-white peer-focus:px-1 peer-[:not(:placeholder-shown)]:scale-85 peer-[:not(:placeholder-shown)]:-translate-y-5 peer-[:not(:placeholder-shown)]:left-3 peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1"
                                             >
                                                 Age
                                             </label>
@@ -255,7 +255,7 @@ const AuthPage = () => {
                                             />
                                             <label
                                                 htmlFor="email"
-                                                className="absolute left-4 top-3 text-[#7a8a7f] text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm peer-focus:top-[-10px] peer-focus:left-3 peer-focus:text-xs peer-focus:text-[#2D4739] peer-focus:bg-white peer-focus:px-1 peer-[:not(:placeholder-shown)]:top-[-10px] peer-[:not(:placeholder-shown)]:left-3 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1"
+                                                className="absolute left-4 top-3 text-[#7a8a7f] text-sm transition-all pointer-events-none origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-85 peer-focus:-translate-y-5 peer-focus:left-3 peer-focus:text-[#2D4739] peer-focus:bg-white peer-focus:px-1 peer-[:not(:placeholder-shown)]:scale-85 peer-[:not(:placeholder-shown)]:-translate-y-5 peer-[:not(:placeholder-shown)]:left-3 peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1"
                                             >
                                                 Email
                                             </label>
@@ -274,7 +274,7 @@ const AuthPage = () => {
                                             />
                                             <label
                                                 htmlFor="whatsapp"
-                                                className="absolute left-4 top-3 text-[#7a8a7f] text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm peer-focus:top-[-10px] peer-focus:left-3 peer-focus:text-xs peer-focus:text-[#2D4739] peer-focus:bg-white peer-focus:px-1 peer-[:not(:placeholder-shown)]:top-[-10px] peer-[:not(:placeholder-shown)]:left-3 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1"
+                                                className="absolute left-4 top-3 text-[#7a8a7f] text-sm transition-all pointer-events-none origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-85 peer-focus:-translate-y-5 peer-focus:left-3 peer-focus:text-[#2D4739] peer-focus:bg-white peer-focus:px-1 peer-[:not(:placeholder-shown)]:scale-85 peer-[:not(:placeholder-shown)]:-translate-y-5 peer-[:not(:placeholder-shown)]:left-3 peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1"
                                             >
                                                 WhatsApp Number
                                             </label>
@@ -340,7 +340,7 @@ const AuthPage = () => {
                                             />
                                             <label
                                                 htmlFor="phone"
-                                                className="absolute left-4 top-3 text-[#7a8a7f] text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm peer-focus:top-[-10px] peer-focus:left-3 peer-focus:text-xs peer-focus:text-[#2D4739] peer-focus:bg-white peer-focus:px-1 peer-[:not(:placeholder-shown)]:top-[-10px] peer-[:not(:placeholder-shown)]:left-3 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1"
+                                                className="absolute left-4 top-3 text-[#7a8a7f] text-sm transition-all pointer-events-none origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-85 peer-focus:-translate-y-5 peer-focus:left-3 peer-focus:text-[#2D4739] peer-focus:bg-white peer-focus:px-1 peer-[:not(:placeholder-shown)]:scale-85 peer-[:not(:placeholder-shown)]:-translate-y-5 peer-[:not(:placeholder-shown)]:left-3 peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1"
                                             >
                                                 Registered WhatsApp Number
                                             </label>
@@ -358,7 +358,7 @@ const AuthPage = () => {
                                             />
                                             <label
                                                 htmlFor="otp"
-                                                className="absolute left-4 top-3 text-[#7a8a7f] text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm peer-focus:top-[-10px] peer-focus:left-3 peer-focus:text-xs peer-focus:text-[#2D4739] peer-focus:bg-white peer-focus:px-1 peer-[:not(:placeholder-shown)]:top-[-10px] peer-[:not(:placeholder-shown)]:left-3 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1"
+                                                className="absolute left-4 top-3 text-[#7a8a7f] text-sm transition-all pointer-events-none origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-85 peer-focus:-translate-y-5 peer-focus:left-3 peer-focus:text-[#2D4739] peer-focus:bg-white peer-focus:px-1 peer-[:not(:placeholder-shown)]:scale-85 peer-[:not(:placeholder-shown)]:-translate-y-5 peer-[:not(:placeholder-shown)]:left-3 peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1"
                                             >
                                                 OTP
                                             </label>

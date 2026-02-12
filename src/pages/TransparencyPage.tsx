@@ -76,7 +76,7 @@ const TransparencyPage = () => {
             <div className="relative flex items-center justify-between">
               <Link to="/" onClick={() => window.scrollTo(0, 0)}><Button variant="ghost" size="icon" className="rounded-full"><ArrowLeft className="h-5 w-5" /></Button></Link>
 
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-6">
+              <div className="hidden sm:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-6">
                 <Link to="/" onClick={() => window.scrollTo(0, 0)} className="text-foreground/80 hover:text-foreground font-body text-sm font-medium transition-colors">Home</Link>
                 <Link to="/product" onClick={() => window.scrollTo(0, 0)} className="text-foreground/80 hover:text-foreground font-body text-sm font-medium transition-colors">Shop</Link>
               </div>

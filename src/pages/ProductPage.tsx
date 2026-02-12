@@ -158,7 +158,7 @@ const ProductPage = () => {
               <ScrollReveal animation="fade-up">
                 <div className="space-y-3 sm:space-y-5">
                   <h2 className="font-display text-lg sm:text-xl md:text-2xl font-semibold text-foreground text-center">Ingredient Profile</h2>
-                  <div className="grid grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
                     {ingredients.map(({ icon: Icon, name, description }) => (
                       <div key={name} className="flex flex-col items-center text-center gap-2 sm:gap-3 p-3 sm:p-4 bg-primary/5 rounded-xl border border-primary/10 transition-all duration-200 hover:bg-primary/10 h-full">
                         <div className="h-8 w-8 sm:h-10 sm:w-10 bg-secondary rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0"><Icon className="h-4 w-4 sm:h-5 sm:w-5 text-primary" /></div>

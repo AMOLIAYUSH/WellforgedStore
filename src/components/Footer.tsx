@@ -18,7 +18,7 @@ const Footer = () => {
   return (
     <footer className="bg-secondary/30 border-t border-border pb-16 sm:pb-0">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
-        <div className="grid grid-cols-2 gap-x-4 gap-y-3 sm:grid-cols-4 sm:gap-6 text-center sm:text-left">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12 text-center sm:text-left">
           <div className="hidden sm:flex flex-col items-start">
             <img src={wfLogo} alt="WellForged Logo" className="w-8 h-8 sm:w-10 sm:h-10 object-contain mb-2" />
             <p className="font-display text-xs text-foreground font-medium">WellForged</p>

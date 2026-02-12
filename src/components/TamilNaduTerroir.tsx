@@ -19,7 +19,7 @@ const TamilNaduTerroir = () => {
             <p className="font-body text-sm sm:text-base lg:text-lg text-muted-foreground max-w-xl sm:max-w-2xl mx-auto leading-relaxed px-2">Just as fine wines are defined by their terroir, our Moringa is defined by its origin. Tamil Nadu's unique microclimate creates the gold standard of Moringa cultivation.</p>
           </div>
         </ScrollReveal>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 lg:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
           {terroirFeatures.map((feature, index) => (
             <ScrollReveal key={feature.title} delay={index * 100}>
               <div className="glass-card p-3 sm:p-4 lg:p-5 xl:p-6 h-full text-center group">
