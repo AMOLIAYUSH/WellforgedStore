@@ -19,6 +19,7 @@ interface AuthContextType {
     user: User | null;
     redirectUrl: string | null;
     pendingCartAction: PendingCartAction | null;
+    token: string | null;
     login: (token: string, user: User) => void;
     logout: () => void;
     setRedirectUrl: (url: string | null) => void;
@@ -30,6 +31,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [user, setUser] = useState<User | null>(null);
+    const [token, setToken] = useState<string | null>(null);
     const [redirectUrl, setRedirectUrl] = useState<string | null>(null);
     const [pendingCartAction, setPendingCartAction] = useState<PendingCartAction | null>(null);
 
@@ -42,6 +44,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 if (stored && storedUser && token) {
                     setIsLoggedIn(true);
                     setUser(storedUser);
+                    setToken(token);
                 }
             } catch (error) {
                 console.error("Failed to parse stored auth:", error);
@@ -53,6 +56,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const login = (token: string, user: User) => {
         setIsLoggedIn(true);
         setUser(user);
+        setToken(token);
 
         // Persist to localStorage
         localStorage.setItem("wellforged_auth", JSON.stringify({
@@ -65,6 +69,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const logout = () => {
         setIsLoggedIn(false);
         setUser(null);
+        setToken(null);
         setRedirectUrl(null);
         setPendingCartAction(null);
         localStorage.removeItem("wellforged_auth");
@@ -75,6 +80,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             value={{
                 isLoggedIn,
                 user,
+                token,
                 redirectUrl,
                 pendingCartAction,
                 login,

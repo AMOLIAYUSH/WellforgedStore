@@ -30,8 +30,8 @@ const AuthPage = () => {
 
     // SKU data for pending cart actions
     const skus = [
-        { id: "moringa-100g", size: "100g", price: 349 },
-        { id: "moringa-250g", size: "250g", price: 549, originalPrice: 699 },
+        { id: "d17304a7-739b-40a1-b822-7e619fbfb6bd", size: "100g", price: 349 },
+        { id: "c43be4a9-0174-4b01-aa7c-fc8cc011ab72", size: "250g", price: 549, originalPrice: 699 },
     ];
 
     const handleSignUp = async (e: React.FormEvent) => {
