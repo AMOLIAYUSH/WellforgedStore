@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Shield, CheckCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/context/AuthContext";
 import { useCart } from "@/context/CartContext";
@@ -16,8 +16,8 @@ const AuthPage = () => {
         age: "",
         email: "",
         whatsapp: "",
-        receivePromotions: false,
-        acceptTerms: false,
+        receiveWhatsApp: true,
+        acceptTerms: true,
     });
     const [signInData, setSignInData] = useState({
         phone: "",
@@ -110,8 +110,8 @@ const AuthPage = () => {
                 age: "",
                 email: "",
                 whatsapp: "",
-                receivePromotions: false,
-                acceptTerms: false,
+                receiveWhatsApp: true,
+                acceptTerms: true,
             });
         } catch (error) {
             toast({
@@ -194,125 +194,109 @@ const AuthPage = () => {
                 <meta name="description" content="Join WellForged for clean, transparent nutrition." />
             </Helmet>
 
-            <div className="min-h-screen bg-gradient-to-br from-[#f8f9f7] via-[#fdfefe] to-[#f3f5f2] flex flex-col overflow-y-auto">
-                {/* Minimal Header */}
-                <header className="flex-shrink-0">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
-                        <Link to="/" onClick={() => window.scrollTo(0, 0)}>
-                            <button className="group flex items-center gap-2 text-[#2D4739] hover:text-[#1a2a20] transition-colors">
-                                <ArrowLeft className="h-4 w-4" />
-                                <span className="text-sm font-light tracking-wide">Back</span>
-                            </button>
-                        </Link>
-                    </div>
-                </header>
+            <div className="min-h-screen bg-[#fcfdfc] relative flex flex-col items-center justify-center py-4 px-4 sm:px-6 lg:px-8 overflow-hidden">
+                {/* Decorative Background Elements */}
+                <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+                    <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-primary/5 rounded-full blur-[120px] animate-pulse-subtle" />
+                    <div className="absolute -bottom-[10%] -right-[10%] w-[40%] h-[40%] bg-gold/5 rounded-full blur-[120px] animate-pulse-subtle" style={{ animationDelay: '2s' }} />
+                </div>
 
-                {/* Main Content */}
-                <main className="flex-1 flex items-center justify-center px-4 sm:px-6 py-6 sm:py-8">
-                    <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-                        {/* Logo Section - Hidden on Mobile */}
-                        <div className="hidden lg:flex flex-col items-center justify-center text-center space-y-6">
-                            <img
-                                src={logo}
-                                alt="WellForged Logo"
-                                className="w-40 h-40 object-contain opacity-90"
-                            />
-                            <div className="space-y-2">
-                                <h1 className="font-serif font-light text-[#2D4739] tracking-tight" style={{ fontSize: "var(--text-4xl)" }}>
-                                    WellForged
-                                </h1>
-                                <p className="font-light text-sm text-[#5a6b5f] tracking-wide max-w-xs mx-auto leading-relaxed">
-                                    Clean nutrition. Complete transparency.
-                                </p>
+                <div className="w-full max-w-[1000px] relative z-10 animate-fade-up">
+                    {/* Main Auth Container */}
+                    <div className="bg-card/40 backdrop-blur-xl border border-border/50 rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col lg:grid lg:grid-cols-2">
+
+                        {/* Left Side: Branding & Value Prop */}
+                        <div className="flex flex-col justify-center p-6 lg:p-10 bg-gradient-to-br from-primary/10 via-background to-gold/10 border-b lg:border-b-0 lg:border-r border-border/50 relative">
+                            {/* Back Link */}
+                            <Link to="/" className="lg:absolute lg:top-8 lg:left-8 mb-4 lg:mb-0 inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-all duration-300 text-sm font-medium">
+                                <ArrowLeft className="h-4 w-4" /> Back to Home
+                            </Link>
+
+                            <div className="space-y-4 lg:space-y-6 flex flex-col items-center lg:items-start text-center lg:text-left">
+                                <div className="space-y-2">
+                                    <h2 className="font-display text-xl lg:text-2xl font-bold text-foreground leading-tight">
+                                        Join the standard for <br />
+                                        <span className="text-primary italic">Clean Nutrition</span>
+                                    </h2>
+                                    <p className="font-body text-xs text-muted-foreground leading-relaxed max-w-sm">
+                                        Access verified third-party lab results for every batch and join a community dedicated to transparency.
+                                    </p>
+                                </div>
+
+                                <div className="hidden lg:block space-y-2">
+                                    {[
+                                        { title: "Batch Specific Reports", desc: "Every single product is verified." },
+                                        { title: "No Fillers", desc: "100% Moringa Oleifera." }
+                                    ].map((item, i) => (
+                                        <div key={i} className="flex gap-2 items-start">
+                                            <div className="mt-1 h-3.5 w-3.5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                                                <div className="h-1 w-1 rounded-full bg-primary" />
+                                            </div>
+                                            <div>
+                                                <h4 className="font-display font-semibold text-xs text-foreground">{item.title}</h4>
+                                                <p className="font-body text-[9px] text-muted-foreground">{item.desc}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         </div>
 
-                        {/* Form Section */}
-                        <div className="w-full max-w-md mx-auto">
-                            <div className="bg-white/60 backdrop-blur-sm rounded-2xl sm:rounded-3xl border border-[#e8ebe9] p-5 sm:p-6 lg:p-8 shadow-[0_8px_30px_rgb(45,71,57,0.06)]">
-                                <h2 className="font-serif font-light text-[#2D4739] mb-6 sm:mb-8 tracking-tight" style={{ fontSize: "var(--text-3xl)" }}>
-                                    {isSignUp ? "Create Account" : "Welcome Back"}
-                                </h2>
+                        {/* Right Side: Interactive Form */}
+                        <div className="p-6 lg:p-10 flex flex-col justify-center bg-card/10">
+                            <div className="mb-4">
+                                <h3 className="font-display text-xl font-bold text-foreground mb-0.5">{isSignUp ? "Create Account" : "Sign In"}</h3>
+                                <p className="font-body text-xs text-muted-foreground">
+                                    {isSignUp ? "Enter your details to join." : "Welcome back! Enter your details."}
+                                </p>
+                            </div>
 
-                                {isSignUp ? (
-                                    // Sign Up Form
-                                    <form onSubmit={handleSignUp} className="space-y-4 sm:space-y-5">
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                                            <div className="relative">
-                                                <input
-                                                    type="text"
-                                                    id="firstName"
-                                                    value={formData.firstName}
-                                                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                                                    required
-                                                    placeholder=" "
-                                                    className="peer w-full px-4 py-3 bg-transparent border border-[#d4d9d6] rounded-xl focus:border-[#2D4739] focus:outline-none transition-colors text-sm"
-                                                />
-                                                <label
-                                                    htmlFor="firstName"
-                                                    className="absolute left-4 top-3 text-[#7a8a7f] text-sm transition-all pointer-events-none origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-85 peer-focus:-translate-y-5 peer-focus:left-3 peer-focus:text-[#2D4739] peer-focus:bg-white peer-focus:px-1 peer-[:not(:placeholder-shown)]:scale-85 peer-[:not(:placeholder-shown)]:-translate-y-5 peer-[:not(:placeholder-shown)]:left-3 peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1"
-                                                >
-                                                    First Name
-                                                </label>
-                                            </div>
-                                            <div className="relative">
-                                                <input
-                                                    type="text"
-                                                    id="lastName"
-                                                    value={formData.lastName}
-                                                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                                                    required
-                                                    placeholder=" "
-                                                    className="peer w-full px-4 h-12 bg-transparent border border-[#d4d9d6] rounded-xl focus:border-[#2D4739] focus:outline-none transition-colors text-sm"
-                                                />
-                                                <label
-                                                    htmlFor="lastName"
-                                                    className="absolute left-4 top-3.5 text-[#7a8a7f] text-sm transition-all pointer-events-none origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-85 peer-focus:-translate-y-6 peer-focus:left-3 peer-focus:text-[#2D4739] peer-focus:bg-white peer-focus:px-1 peer-[:not(:placeholder-shown)]:scale-85 peer-[:not(:placeholder-shown)]:-translate-y-6 peer-[:not(:placeholder-shown)]:left-3 peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1"
-                                                >
-                                                    Last Name
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                        <div className="relative">
+                            {isSignUp ? (
+                                <form onSubmit={handleSignUp} className="space-y-2 animate-in fade-in slide-in-from-right-4 duration-500">
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                        <div className="space-y-1">
+                                            <label htmlFor="firstName" className="font-body text-[10px] font-bold text-muted-foreground ml-1 uppercase tracking-wider">First Name</label>
                                             <input
-                                                type="number"
-                                                id="age"
-                                                value={formData.age}
-                                                onChange={(e) => setFormData({ ...formData, age: e.target.value })}
+                                                type="text"
+                                                id="firstName"
+                                                value={formData.firstName}
+                                                onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                                                 required
-                                                min="1"
-                                                max="120"
-                                                placeholder=" "
-                                                className="peer w-full px-4 py-3 bg-transparent border border-[#d4d9d6] rounded-xl focus:border-[#2D4739] focus:outline-none transition-colors text-sm"
+                                                className="w-full h-9 px-4 bg-background border border-border rounded-xl focus:border-primary focus:outline-none transition-all text-xs"
+                                                placeholder="John"
                                             />
-                                            <label
-                                                htmlFor="age"
-                                                className="absolute left-4 top-3 text-[#7a8a7f] text-sm transition-all pointer-events-none origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-85 peer-focus:-translate-y-5 peer-focus:left-3 peer-focus:text-[#2D4739] peer-focus:bg-white peer-focus:px-1 peer-[:not(:placeholder-shown)]:scale-85 peer-[:not(:placeholder-shown)]:-translate-y-5 peer-[:not(:placeholder-shown)]:left-3 peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1"
-                                            >
-                                                Age
-                                            </label>
                                         </div>
-
-                                        <div className="relative">
+                                        <div className="space-y-1">
+                                            <label htmlFor="lastName" className="font-body text-[10px] font-bold text-muted-foreground ml-1 uppercase tracking-wider">Last Name</label>
                                             <input
-                                                type="email"
-                                                id="email"
-                                                value={formData.email}
-                                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                                type="text"
+                                                id="lastName"
+                                                value={formData.lastName}
+                                                onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                                                 required
-                                                placeholder=" "
-                                                className="peer w-full px-4 py-3 bg-transparent border border-[#d4d9d6] rounded-xl focus:border-[#2D4739] focus:outline-none transition-colors text-sm"
+                                                className="w-full h-9 px-4 bg-background border border-border rounded-xl focus:border-primary focus:outline-none transition-all text-xs"
+                                                placeholder="Doe"
                                             />
-                                            <label
-                                                htmlFor="email"
-                                                className="absolute left-4 top-3 text-[#7a8a7f] text-sm transition-all pointer-events-none origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-85 peer-focus:-translate-y-5 peer-focus:left-3 peer-focus:text-[#2D4739] peer-focus:bg-white peer-focus:px-1 peer-[:not(:placeholder-shown)]:scale-85 peer-[:not(:placeholder-shown)]:-translate-y-5 peer-[:not(:placeholder-shown)]:left-3 peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1"
-                                            >
-                                                Email
-                                            </label>
                                         </div>
+                                    </div>
 
+                                    <div className="space-y-1">
+                                        <label htmlFor="email" className="font-body text-[10px] font-bold text-muted-foreground ml-1 uppercase tracking-wider">Email</label>
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            value={formData.email}
+                                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                            required
+                                            className="w-full h-9 px-4 bg-background border border-border rounded-xl focus:border-primary focus:outline-none transition-all text-xs"
+                                            placeholder="john@example.com"
+                                        />
+                                    </div>
+
+                                    <div className="space-y-1">
+                                        <label htmlFor="whatsapp" className="font-body text-[10px] font-bold text-muted-foreground ml-1 uppercase tracking-wider">WhatsApp</label>
                                         <div className="relative">
+                                            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground text-xs font-body border-r pr-3">+91</span>
                                             <input
                                                 type="tel"
                                                 id="whatsapp"
@@ -320,65 +304,51 @@ const AuthPage = () => {
                                                 onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
                                                 required
                                                 pattern="[0-9]{10}"
-                                                placeholder=" "
-                                                className="peer w-full px-4 py-3 bg-transparent border border-[#d4d9d6] rounded-xl focus:border-[#2D4739] focus:outline-none transition-colors text-sm"
+                                                className="w-full h-9 pl-16 pr-4 bg-background border border-border rounded-xl focus:border-primary focus:outline-none transition-all text-xs"
+                                                placeholder="9876543210"
                                             />
-                                            <label
-                                                htmlFor="whatsapp"
-                                                className="absolute left-4 top-3 text-[#7a8a7f] text-sm transition-all pointer-events-none origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-85 peer-focus:-translate-y-5 peer-focus:left-3 peer-focus:text-[#2D4739] peer-focus:bg-white peer-focus:px-1 peer-[:not(:placeholder-shown)]:scale-85 peer-[:not(:placeholder-shown)]:-translate-y-5 peer-[:not(:placeholder-shown)]:left-3 peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1"
-                                            >
-                                                WhatsApp Number
-                                            </label>
                                         </div>
+                                    </div>
 
-                                        <div className="space-y-3 pt-2">
-                                            <label className="flex items-start gap-3 cursor-pointer group">
-                                                <input
-                                                    type="checkbox"
-                                                    checked={formData.receivePromotions}
-                                                    onChange={(e) => setFormData({ ...formData, receivePromotions: e.target.checked })}
-                                                    className="mt-0.5 w-4 h-4 rounded border-[#d4d9d6] text-[#2D4739] focus:ring-[#2D4739] focus:ring-offset-0"
-                                                />
-                                                <span className="text-xs text-[#5a6b5f] font-light leading-relaxed">
-                                                    Receive WhatsApp promotions
-                                                </span>
-                                            </label>
+                                    <div className="space-y-2 mt-2">
+                                        <label className="flex items-center gap-3 cursor-pointer group">
+                                            <input
+                                                type="checkbox"
+                                                checked={formData.receiveWhatsApp}
+                                                onChange={(e) => setFormData({ ...formData, receiveWhatsApp: e.target.checked })}
+                                                className="w-4 h-4 rounded border-border text-primary focus:ring-primary focus:ring-offset-0 transition-all cursor-pointer"
+                                            />
+                                            <span className="text-[10px] text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors">
+                                                Receive WhatsApp notifications
+                                            </span>
+                                        </label>
 
-                                            <label className="flex items-start gap-3 cursor-pointer group">
-                                                <input
-                                                    type="checkbox"
-                                                    checked={formData.acceptTerms}
-                                                    onChange={(e) => setFormData({ ...formData, acceptTerms: e.target.checked })}
-                                                    className="mt-0.5 w-4 h-4 rounded border-[#d4d9d6] text-[#2D4739] focus:ring-[#2D4739] focus:ring-offset-0"
-                                                />
-                                                <span className="text-xs text-[#5a6b5f] font-light leading-relaxed">
-                                                    I accept the terms and conditions
-                                                </span>
-                                            </label>
-                                        </div>
+                                        <label className="flex items-center gap-3 cursor-pointer group">
+                                            <input
+                                                type="checkbox"
+                                                checked={formData.acceptTerms}
+                                                onChange={(e) => setFormData({ ...formData, acceptTerms: e.target.checked })}
+                                                className="w-4 h-4 rounded border-border text-primary focus:ring-primary focus:ring-offset-0 transition-all cursor-pointer"
+                                            />
+                                            <span className="text-[10px] text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors">
+                                                I accept <Link to="/terms" className="text-primary hover:underline underline-offset-4 font-bold">Terms & Conditions</Link>
+                                            </span>
+                                        </label>
+                                    </div>
 
-                                        <button
-                                            type="submit"
-                                            className="w-full bg-[#2D4739] text-white py-3.5 rounded-xl font-light tracking-wide transition-all hover:bg-[#1a2a20] hover:scale-[1.02] active:scale-[0.98] mt-6"
-                                        >
-                                            Create Account
-                                        </button>
-
-                                        <p className="text-center text-xs text-[#7a8a7f] font-light mt-4">
-                                            Already a member?{" "}
-                                            <button
-                                                type="button"
-                                                onClick={() => setIsSignUp(false)}
-                                                className="text-[#2D4739] font-normal hover:underline"
-                                            >
-                                                Sign In
-                                            </button>
-                                        </p>
-                                    </form>
-                                ) : (
-                                    // Sign In Form
-                                    <form onSubmit={handleSignIn} className="space-y-5">
+                                    <button
+                                        type="submit"
+                                        className="w-full h-10 bg-primary text-white rounded-xl font-display font-bold tracking-wide transition-all hover:bg-primary-hover hover:scale-[1.01] active:scale-[0.99] shadow-lg shadow-primary/20 mt-1"
+                                    >
+                                        Forge Account
+                                    </button>
+                                </form>
+                            ) : (
+                                <form onSubmit={handleSignIn} className="space-y-3 animate-in fade-in slide-in-from-left-4 duration-500">
+                                    <div className="space-y-1">
+                                        <label htmlFor="phone" className="font-body text-[10px] font-bold text-muted-foreground ml-1 uppercase tracking-wider">WhatsApp</label>
                                         <div className="relative">
+                                            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground text-xs font-body border-r pr-3">+91</span>
                                             <input
                                                 type="tel"
                                                 id="phone"
@@ -386,58 +356,53 @@ const AuthPage = () => {
                                                 onChange={(e) => setSignInData({ ...signInData, phone: e.target.value })}
                                                 required
                                                 pattern="[0-9]{10}"
-                                                placeholder=" "
-                                                className="peer w-full px-4 py-3 bg-transparent border border-[#d4d9d6] rounded-xl focus:border-[#2D4739] focus:outline-none transition-colors text-sm"
+                                                className="w-full h-10 pl-16 pr-4 bg-background border border-border rounded-xl focus:border-primary focus:outline-none transition-all text-xs"
+                                                placeholder="9876543210"
                                             />
-                                            <label
-                                                htmlFor="phone"
-                                                className="absolute left-4 top-3 text-[#7a8a7f] text-sm transition-all pointer-events-none origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-85 peer-focus:-translate-y-5 peer-focus:left-3 peer-focus:text-[#2D4739] peer-focus:bg-white peer-focus:px-1 peer-[:not(:placeholder-shown)]:scale-85 peer-[:not(:placeholder-shown)]:-translate-y-5 peer-[:not(:placeholder-shown)]:left-3 peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1"
-                                            >
-                                                Registered WhatsApp Number
-                                            </label>
                                         </div>
+                                    </div>
 
-                                        <div className="relative">
-                                            <input
-                                                type="text"
-                                                id="otp"
-                                                value={signInData.otp}
-                                                onChange={(e) => setSignInData({ ...signInData, otp: e.target.value })}
-                                                required
-                                                placeholder=" "
-                                                className="peer w-full px-4 py-3 bg-transparent border border-[#d4d9d6] rounded-xl focus:border-[#2D4739] focus:outline-none transition-colors text-sm"
-                                            />
-                                            <label
-                                                htmlFor="otp"
-                                                className="absolute left-4 top-3 text-[#7a8a7f] text-sm transition-all pointer-events-none origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-85 peer-focus:-translate-y-5 peer-focus:left-3 peer-focus:text-[#2D4739] peer-focus:bg-white peer-focus:px-1 peer-[:not(:placeholder-shown)]:scale-85 peer-[:not(:placeholder-shown)]:-translate-y-5 peer-[:not(:placeholder-shown)]:left-3 peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1"
-                                            >
-                                                OTP
-                                            </label>
+                                    <div className="space-y-1">
+                                        <div className="flex justify-between items-center ml-1">
+                                            <label htmlFor="otp" className="font-body text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Security OTP</label>
+                                            <button type="button" className="text-[10px] text-primary font-bold hover:underline uppercase tracking-wider">Get OTP</button>
                                         </div>
+                                        <input
+                                            type="text"
+                                            id="otp"
+                                            value={signInData.otp}
+                                            onChange={(e) => setSignInData({ ...signInData, otp: e.target.value })}
+                                            required
+                                            maxLength={4}
+                                            className="w-full h-10 px-4 bg-background border border-border rounded-xl focus:border-primary focus:outline-none transition-all text-sm tracking-[0.5em] text-center font-bold"
+                                            placeholder="••••"
+                                        />
+                                    </div>
 
-                                        <button
-                                            type="submit"
-                                            className="w-full bg-[#2D4739] text-white py-3.5 rounded-xl font-light tracking-wide transition-all hover:bg-[#1a2a20] hover:scale-[1.02] active:scale-[0.98] mt-6"
-                                        >
-                                            Sign In
-                                        </button>
+                                    <button
+                                        type="submit"
+                                        className="w-full h-10 bg-primary text-white rounded-xl font-display font-bold tracking-wide transition-all hover:bg-primary-hover hover:scale-[1.01] active:scale-[0.99] shadow-lg shadow-primary/20 mt-1"
+                                    >
+                                        Sign In Securely
+                                    </button>
+                                </form>
+                            )}
 
-                                        <p className="text-center text-xs text-[#7a8a7f] font-light mt-4">
-                                            Don't have an account?{" "}
-                                            <button
-                                                type="button"
-                                                onClick={() => setIsSignUp(true)}
-                                                className="text-[#2D4739] font-normal hover:underline"
-                                            >
-                                                Create Account
-                                            </button>
-                                        </p>
-                                    </form>
-                                )}
+                            <div className="mt-4 pt-4 border-t border-border/50 text-center">
+                                <p className="text-xs text-muted-foreground font-body">
+                                    {isSignUp ? "Already a member?" : "New here?"}{" "}
+                                    <button
+                                        type="button"
+                                        onClick={() => setIsSignUp(!isSignUp)}
+                                        className="text-primary font-bold hover:underline decoration-2 underline-offset-4"
+                                    >
+                                        {isSignUp ? "Sign In" : "Create Account"}
+                                    </button>
+                                </p>
                             </div>
                         </div>
                     </div>
-                </main>
+                </div>
             </div>
         </>
     );

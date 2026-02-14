@@ -25,7 +25,7 @@ const ProductSelector = () => {
   const { isLoggedIn, setPendingCartAction, setRedirectUrl } = useAuth();
   const navigate = useNavigate();
 
-  const handleAddToCart = () => {
+  const handleAddToCart = async () => {
     if (!isLoggedIn) {
       // Store pending cart action
       setPendingCartAction({ sku: selectedSku.id, action: "add" });
